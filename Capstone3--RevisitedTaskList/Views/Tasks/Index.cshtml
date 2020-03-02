@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<Tasks>
+
+<h1>List of Tasks!</h1>
+
+<!--List the tasks-->
+<table class="table-dark table">
+    <tr>
+        <td><h4>Task Description</h4></td>
+        <td><h4>Due Date</h4></td>
+        <td><h4>Completed?</h4></td>
+    </tr>
+    @foreach (Tasks tasks in Model)
+    {
+<tr>
+    <td>@tasks.TaskDescription</td>
+    <td>@tasks.DueDate.ToString("yyyy/MM/dd")</td>
+    <td>
+        @{ if (tasks.Completed)
+            {
+                <font color="green">Yes!</font>
+
+            }
+            else
+            {
+                <font color="red">No!</font>
+            }
+        }
+    <td><a href="../Tasks/EditTasks?id=@tasks.Id" class="btn-light"> Edit task!</a></td>
+    <td><a href="../Tasks/DeleteTasks?id=@tasks.Id" class="btn-light"> Delete task!</a></td>
+    <td><a href="../Tasks/SortTasks">Sort Tasks</a></td>
+
+</tr>
+    }
+</table>
+<a href="../Tasks/AddTasks" class="btn-lg"> Add a new task!</a>
+<form action="../Tasks/FindTasks" method="post">
+    <input type="text" name="word" value="" />
+    <input type="submit" name="submit" value="Search" />
+
+</form>

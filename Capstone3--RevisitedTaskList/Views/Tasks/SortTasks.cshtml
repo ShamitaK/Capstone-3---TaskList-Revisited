@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "SortTasks";
+}
+
+@Html.ValidationSummary()
+
+<h1>Sort Tasks</h1>
+<form action="../Tasks/SortTasks" method="post">
+    <input type="radio" name="id" value="1" /> Sort By Due Date
+    <input type="radio" name="id" value="2" /> Sort By Completion Status
+    <input type="submit" name="submit" value="Sort Task" />
+
+</form>
+
